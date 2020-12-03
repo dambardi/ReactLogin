@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View, Button, Image, SafeAreaView, ImageBackground} from 'react-native';
 
 import * as Google from 'expo-google-app-auth'
 
@@ -33,12 +33,17 @@ export default class LoginScreen extends Component{
 
     render(){
         return (
-            <View style={styles.container}>
+            <ImageBackground source={require('../images/bg.jpg')} style={styles.container}>
+                <SafeAreaView style={styles.container}></SafeAreaView>
+                <Text>Rick and Morty API - Parcial2 </Text>
+                <Image source={require('../images/rick.png')} style={styles.mainImage}/>
+            
                 <Button
                     onPress={() => this._signInWithGoogle()}
                     title="Iniciar sesión con Google"
                 />
-            </View>
+            <SafeAreaView style={styles.container}></SafeAreaView>
+            </ImageBackground>
         );
     }
 
@@ -47,9 +52,10 @@ export default class LoginScreen extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#bfde7c',
         alignItems: 'center',
         justifyContent: 'center',
     },
+
 });
 

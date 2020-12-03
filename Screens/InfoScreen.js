@@ -48,6 +48,7 @@ export class InfoScreen extends Component {
           .then( response =>{
             console.log(response);
             this.setState({consulteApi:true, results: response.data.results[0]});
+            Keyboard.dismiss()
           })
           .catch(error => {
             // handle error
@@ -110,7 +111,7 @@ export class InfoScreen extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#05273d',
       alignItems: 'center',
       justifyContent: 'center',
     },

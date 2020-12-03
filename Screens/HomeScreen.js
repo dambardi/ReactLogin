@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, View } from 'react-native';
 import {  Container, Content, Card, Button, Body, Text, InputGroup, Input, Icon } from 'native-base';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+import { Keyboard } from 'react-native'
 
 const axios = require("axios");
 
@@ -48,6 +49,7 @@ export class HomeScreen extends Component {
           .then( response =>{
             console.log(response);
             this.setState({consulteApi:true, results: response.data.results[0]});
+            Keyboard.dismiss()
           })
           .catch(error => {
             // handle error
@@ -63,6 +65,9 @@ export class HomeScreen extends Component {
           return (
             <Container>
             <Content>
+            <View>
+    <Image source={require('../images/logo.png')} style={styles.logo}/>
+    </View>
               <InputGroup borderType="rounded" >
                 <Icon name="md-search" style={{color:'#384850'}}></Icon>
                 <Input  onChangeText={this.handlerChange.bind(this)} style={{color: '#00c497'}} />
@@ -86,6 +91,9 @@ export class HomeScreen extends Component {
           return(
             <Container>
             <Content>
+            <View>
+    <Image source={require('../images/logo.png')} style={styles.logo}/>
+    </View>
               <InputGroup borderType="rounded" >
                 <Icon name="md-search" style={{color:'#384850'}}></Icon>
                 <Input  onChangeText={this.handlerChange.bind(this)} style={{color: '#00c497'}} />
@@ -95,7 +103,7 @@ export class HomeScreen extends Component {
               </Button> 
               <Card style={{flex: 0}}>
                   <Body>
-                    <Text>"Get Out Of Here, Summer! ...</Text>
+                    <Text>Buscar personajes</Text>
                   </Body>
                </Card>
             </Content>
@@ -111,8 +119,12 @@ export class HomeScreen extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#bfde7c',
       alignItems: 'center',
       justifyContent: 'center',
     },
+    logo: {
+      justifyContent: 'center',
+      alignItems: 'center',
+  },
   });
